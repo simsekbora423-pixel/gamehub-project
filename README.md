@@ -1,0 +1,287 @@
+[index.html](https://github.com/user-attachments/files/25351688/index.html)
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameHub Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #121417;
+    color: white;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background-color: #1c1f24;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 12px 0;
+    cursor: pointer;
+    color: #aaa;
+    transition: 0.2s;
+}
+
+.sidebar ul li:hover {
+    color: white;
+}
+
+/* Main Content */
+.main {
+    margin-left: 240px;
+    width: 100%;
+}
+
+/* Topbar */
+.topbar {
+    height: 70px;
+    background-color: #181a1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    border-bottom: 1px solid #2a2d33;
+}
+
+.search {
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2a2d33;
+    color: white;
+}
+
+/* Login Panel */
+.login-btn {
+    background-color: #00a2ff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: #1e2228;
+    padding: 40px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.login-box h3 {
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #2a2d33;
+    border: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00a2ff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Game Section */
+.content {
+    padding: 30px;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #1c1f24;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.04);
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 15px;
+}
+
+.card-info h4 {
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+    .sidebar {
+        display: none;
+    }
+    .main {
+        margin-left: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <h2>GameHub</h2>
+    <ul>
+        <li>Ana Sayfa</li>
+        <li>Keşfet</li>
+        <li>Popüler</li>
+        <li>Arkadaşlar</li>
+        <li>Profil</li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+        <input class="search" placeholder="Oyun ara...">
+        <div class="login-btn" onclick="openLogin()">Giriş Yap</div>
+    </div>
+
+    <div class="content">
+        <div class="section-title">🔥 Popüler Oyunlar</div>
+        <div class="games">
+
+            <div class="card">
+                <img src="https://picsum.photos/400/300?1">
+                <div class="card-info">
+                    <h4>Urban Simulator</h4>
+                    <p>12K Aktif Oyuncu</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/400/300?2">
+                <div class="card-info">
+                    <h4>Island Quest</h4>
+                    <p>8K Aktif Oyuncu</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/400/300?3">
+                <div class="card-info">
+                    <h4>Battle Arena X</h4>
+                    <p>20K Aktif Oyuncu</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://picsum.photos/400/300?4">
+                <div class="card-info">
+                    <h4>Tycoon Empire</h4>
+                    <p>5K Aktif Oyuncu</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Login Modal -->
+<div class="login-modal" id="loginModal">
+    <div class="login-box">
+        <h3>Hesabına Giriş Yap</h3>
+        <input type="text" placeholder="Kullanıcı Adı">
+        <input type="password" placeholder="Şifre">
+        <button onclick="closeLogin()">Giriş</button>
+    </div>
+</div>
+
+<script>
+function openLogin(){
+    document.getElementById("loginModal").style.display = "flex";
+}
+
+function closeLogin(){
+    document.getElementById("loginModal").style.display = "none";
+}
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD6RxM_NRwVsD7kbJpbwOijI3U6VFIEsA8",
+  authDomain: "gamehub-login-8232d.firebaseapp.com",
+  projectId: "gamehub-login-8232d",
+  storageBucket: "gamehub-login-8232d.firebasestorage.app",
+  messagingSenderId: "937698020594",
+  appId: "1:937698020594:web:be509dad6166ac2c0d546b",
+  measurementId: "G-80H1SB2ZWR"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</script>
+
+</body>
+</html>
